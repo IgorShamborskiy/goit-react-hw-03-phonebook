@@ -6,9 +6,8 @@ export const ContactList = ({ visibleContacts, onDeleteContact }) => {
     <ul>
       {visibleContacts.map(item => (
         <li key={item.id} className={css.contactListItem}>
-          <span className={css.contact}>
-            {item.name}: {item.number}
-          </span>
+          {item.name}:{item.number}
+          <span className={css.contact}></span>
           <button
             type="submit"
             className={css.contactBtn}
