@@ -10,6 +10,7 @@ export class App extends Component {
     contacts: [],
     filter: '',
   };
+
   formSubmitHandler = data => {
     this.setState(prevState => {
       const hasName = prevState.contacts.find(
@@ -19,7 +20,7 @@ export class App extends Component {
         alert(`${data.name} is already in contacts`);
       }
       return {
-        contacts: prevState.contacts.concat({ ...data, id: nanoid }),
+        contacts: prevState.contacts.concat({ ...data, id: nanoid() }),
       };
     });
   };
@@ -60,11 +61,14 @@ export class App extends Component {
         </Section>
 
         <Section title="Contacts">
-          <Filter value={this.state.filter} onChange={this.changeFilter} />
+          <Filter
+            value={this.state.filter}
+            onChange={this.changeFilter}
+          ></Filter>
           <ContactList
             visibleContacts={visibleContacts}
             onDeleteContact={this.deleteContact}
-          />
+          ></ContactList>
         </Section>
       </>
     );
